@@ -11,4 +11,12 @@ public static class ListExtensions
             action(x1);
         }
     }
+
+    public static void Foreach<T>(this IEnumerable<T> collection, Action<T> action)
+    {
+        foreach (var x in collection)
+        {
+            action(x);
+        }
+    }
 }

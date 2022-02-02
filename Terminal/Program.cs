@@ -1,8 +1,12 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 
+using System.Reflection;
+using Common.Extensions.List;
+using Routing.Extensions;
 using Routing.Models;
 using Routing.Parsers;
+using Routing.Scanner;
 using SharedModels.Attributes.UtilityAttributes;
 
 namespace Terminal;
@@ -10,37 +14,35 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        /*var line = "test.add \"multiparameter1 multiparameter2\"; param2; -f -g";
-        var context = new ParsingContext()
-        {
-            UnparsedLine = line,
-            CurrentStepLine = line
-        };
-        var utilParser = new DefaultUtilityParser();
-        context = utilParser.Parse(context);
-        var flagParser = new DefaultFlagParser();
-        context = flagParser.Parse(context);
-        var parameterParser = new DefaultParameterParser();
-        context = parameterParser.Parse(context);
-        Console.WriteLine(context.CurrentStepLine);*/
-
-        var line = "todo.add \"long parameter\"; parameter1; parameter2; -f -d -c";
-        var context = new ParsingContext()
-        {
-            UnparsedLine = line,
-            CurrentStepLine = line
-        };
-        var utilityParser = new DefaultUtilityParser();
-        var parameterParser = new DefaultParameterParser();
-        var flagParser = new DefaultFlagParser();
-
-        context = utilityParser.Parse(context);
-        context = flagParser.Parse(context);
-        context = parameterParser.Parse(context);
+        var assembly = Assembly.GetExecutingAssembly();
+        var assemblyScanner = new AssemblyScanner();
+        var utilities = assemblyScanner.Scan(assembly);
+        var context = ParseLine("test.add param1; param2; -f", Rules);
+        
+        
         
         Console.ReadKey();
     }
+
+    public static List<IParser> Rules = new()
+    {
+        new DefaultUtilityParser(),
+        new DefaultParameterParser(),
+        new DefaultFlagParser()
+    };
+
+    public static ParsingContext ParseLine(string line, IEnumerable<IParser> rules)
+    {
+        var context = new ParsingContext
+        {
+            UnparsedLine = line,
+            CurrentStepLine = line
+        };
+        rules.Foreach(x => context = x.Parse(context));
+        return context;
+    }
 }
+
 
 [Utility("test")]
 public class TestUtility

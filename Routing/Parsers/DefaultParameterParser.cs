@@ -26,6 +26,7 @@ public class DefaultParameterParser : IParser
     {
         parameter = string.Empty;
         if (string.IsNullOrWhiteSpace(input)) return false;
+        if (input[0] == '-') return false;
         if (input[0] == '"')
         {
             //long parameter
