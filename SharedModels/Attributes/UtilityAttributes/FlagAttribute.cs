@@ -1,12 +1,9 @@
 ﻿namespace SharedModels.Attributes.UtilityAttributes;
 
-[AttributeUsage(AttributeTargets.Method)]
+[AttributeUsage(AttributeTargets.Parameter)]
 public class FlagAttribute : Attribute
 {
-    public string FlagName { get; set; }
-
-    public FlagAttribute(string flagName)
+    public FlagAttribute()
     {
-        FlagName = flagName;
     }
 }

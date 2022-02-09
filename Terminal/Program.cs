@@ -1,10 +1,11 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using System.Linq;
-using Common.Extensions.List;
+using System.Reflection;
+
+using Routing.Scanner;
+
 using SemanticAnalyzer;
 using SemanticAnalyzer.DefaultParsers;
-using SemanticAnalyzer.Models;
 using SharedModels.Attributes.UtilityAttributes;
 
 namespace Terminal;
@@ -13,9 +14,13 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        var line = "test.add \"long parameter\" [param1 param2 param3] param1 param2 -f -g -h -s";
+        /*var line = "test.add \"long parameter\" [param1 param2 param3] param1 param2 -f -g -h -s";
         var service = SemanticService();
-        var context = service.ParseInputLine(line);
+        var context = service.ParseInputLine(line);*/
+        var assembly = Assembly.GetExecutingAssembly();
+        var types = assembly.GetTypes();
+        var scanner = new AssemblyScanner();
+        var utility = scanner.ScanAssembly(assembly);
     }
 
     public static ISemanticService SemanticService()
@@ -36,7 +41,7 @@ public class TestUtility
     }
 
     [Command("add")]
-    public void TestMethod(string parameter1, string parameter2, string[] flags)
+    public void TestMethod(byte parameter1, int parameter2, [Flag]string[] flags)
     {
     }
 }

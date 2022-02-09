@@ -1,6 +1,13 @@
-﻿namespace Routing.Extensions;
+﻿using System.Reflection;
+using SharedModels.Attributes.UtilityAttributes;
 
-public class MethodInfoExtensions
+namespace Routing.Extensions;
+
+public static class MethodInfoExtensions
 {
-    
+    public static bool IsCommand(this MethodInfo info, out CommandAttribute attribute)
+    {
+        attribute = info.GetCustomAttribute<CommandAttribute>();
+        return attribute != null;
+    }
 }

@@ -2,5 +2,5 @@
 
 public class Flag
 {
-    
+    public string Name { get; set; }
 }
