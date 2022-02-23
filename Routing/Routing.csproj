@@ -9,6 +9,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Common\Common.csproj" />
       <ProjectReference Include="..\InternalModels\InternalModels.csproj" />
+      <ProjectReference Include="..\SemanticAnalyzer\SemanticAnalyzer.csproj" />
       <ProjectReference Include="..\SharedModels\SharedModels.csproj" />
     </ItemGroup>
 

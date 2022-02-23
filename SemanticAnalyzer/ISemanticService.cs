@@ -27,6 +27,11 @@ public interface ISemanticService
         where T : class, IParser;
 
     /// <summary>
+    /// Clear all parsers from storage
+    /// </summary>
+    void ResetParsers();
+
+    /// <summary>
     /// Parsing input line
     /// </summary>
     /// <param name="input"></param>

@@ -1,11 +1,10 @@
-﻿using System.Linq.Expressions;
-using SemanticAnalyzer.Models;
+﻿using SemanticAnalyzer.Models;
 
 namespace SemanticAnalyzer;
 
 public class SemanticService : ISemanticService
 {
-    public List<ParserChainElement> ParsersChain { get; private set; } = new();
+    private List<ParserChainElement> ParsersChain { get; set; } = new();
 
     public void AddParser<T>(int priority) where T : class, IParser
     {
@@ -25,6 +24,11 @@ public class SemanticService : ISemanticService
         {
             ParsersChain.Remove(parser);
         }
+    }
+
+    public void ResetParsers()
+    {
+        ParsersChain.Clear();
     }
 
     public ParsingContext ParseInputLine(string input)
