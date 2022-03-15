@@ -8,7 +8,7 @@
 
     <ItemGroup>
       <PackageReference Include="Castle.Windsor" Version="5.1.1" />
-      <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0-preview.1.22076.8" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0-preview.2.22152.2" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0-preview.1.22076.8" />
       <PackageReference Include="Serilog.Settings.Configuration" Version="3.3.1-dev-00296" />
     </ItemGroup>
