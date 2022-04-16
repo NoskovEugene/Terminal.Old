@@ -2,7 +2,7 @@
 
 namespace SemanticAnalyzer;
 
-public class SemanticService : ISemanticService
+public class SyntaxAnalyzer : ISyntaxAnalyzer
 {
     private List<ParserChainElement> ParsersChain { get; set; } = new();
 
