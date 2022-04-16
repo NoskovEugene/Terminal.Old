@@ -68,7 +68,8 @@ public class DefaultParameterParser : IParser
         var strParam = index != -1 ? input[..(index)] : input;
         var parameter = new ParsedParameter(ParsedParameterTypeEnum.Value, strParam.Trim(';'));
         context.ParsedParameters.Add(parameter);
-        context.CurrentStep = context.CurrentStep.Replace(strParam, string.Empty).Trim();
+        context.CurrentStep = context.CurrentStep.Remove(0, strParam.Length).Trim();
+        /*context.CurrentStep = context.CurrentStep.Replace(strParam, string.Empty).Trim();*/
         return true;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
+using Core.Helpers;
 using Microsoft.Extensions.Configuration;
 using SemanticAnalyzer;
 using SemanticAnalyzer.DefaultParsers;
@@ -12,7 +13,7 @@ public class TerminalCore
 
     public WindsorContainer Container { get; }
 
-    public ISemanticService SemanticService { get; }
+    private ISyntaxAnalyzer _syntaxAnalyzer;
     
     public TerminalCore()
     {
@@ -22,22 +23,17 @@ public class TerminalCore
         Configuration = configuration;
         Container = new WindsorContainer();
         Container.Register(Component.For<IConfiguration>().Instance(configuration));
-        ConfigureSemanticService();
+        Container.RegisterDefaultSyntaxService();
+        _syntaxAnalyzer = Container.Resolve<ISyntaxAnalyzer>();
     }
 
-    private void ConfigureSemanticService()
-    {
-        SemanticService.AddParser<DefaultUtilityParser>();
-        SemanticService.AddParser<DefaultParameterParser>();
-        SemanticService.AddParser<DefaultFlagParser>();
-    }
-    
     public void StartListen()
     {
         while (true)
         {
             var line = Console.ReadLine();
-            var context = SemanticService.ParseInputLine(line);
+            var context = _syntaxAnalyzer.ParseInputLine(line);
+            
         }
     }
 }

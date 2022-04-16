@@ -19,7 +19,9 @@ public class AssemblyScanner : IAssemblyScanner
                 var utility = new Utility
                 {
                     Name = attribute.UtilityName,
-                    Commands = GetCommands(x)
+                    Commands = GetCommands(x),
+                    AssemblyInfo = assembly,
+                    ClassInfo = x
                 };
                 lst.Add(utility);
             }
@@ -46,7 +48,8 @@ public class AssemblyScanner : IAssemblyScanner
         {
             Name = commandAttribute.CommandName,
             Parameters = new List<Parameter>(),
-            Flags = new List<Flag>()
+            Flags = new List<Flag>(),
+            MethodInfo = info
         };
         var parameters = info.GetParameters();
         parameters.Foreach(parameterInfo =>
