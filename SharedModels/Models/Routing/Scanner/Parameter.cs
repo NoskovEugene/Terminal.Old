@@ -1,4 +1,6 @@
-﻿namespace SharedModels.Models.Routing.Scanner;
+﻿using System.Reflection;
+
+namespace SharedModels.Models.Routing.Scanner;
 
 public class Parameter
 {

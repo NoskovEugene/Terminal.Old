@@ -29,7 +29,7 @@ public class DefaultFlagParser : IParser
         if (match.Success)
         {
             context.ParsedFlags.Add(match.Value);
-            context.CurrentStep = context.CurrentStep.Replace(match.Value, string.Empty).Trim();
+            context.CurrentStep = context.CurrentStep.Remove(0, match.Value.Length).Trim();
             return true;
         }
         return false;

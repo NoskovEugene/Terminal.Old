@@ -1,4 +1,6 @@
-﻿namespace SharedModels.Models.Routing.Scanner;
+﻿using System.Reflection;
+
+namespace SharedModels.Models.Routing.Scanner;
 
 public class Command
 {
@@ -7,4 +9,6 @@ public class Command
     public IList<Parameter> Parameters { get; set; }
     
     public List<Flag> Flags { get; set; }
+    
+    public MethodInfo MethodInfo { get; set; }
 }
