@@ -2,7 +2,7 @@
 
 namespace SemanticAnalyzer;
 
-public interface ISemanticService
+public interface ISyntaxAnalyzer
 {
     /// <summary>
     /// Adding new parser with priority

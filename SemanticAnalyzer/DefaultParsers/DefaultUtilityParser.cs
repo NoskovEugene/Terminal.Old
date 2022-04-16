@@ -18,6 +18,6 @@ public class DefaultUtilityParser : IParser
         if (array.Length != 2) throw new ParsingException(ParserStep, "Utility or command not found");
         context.ParsedUtilityName = array[0];
         context.ParsedCommandName = array[1];
-        context.CurrentStep = context.CurrentStep.Replace(utility, string.Empty).Trim(' ');
+        context.CurrentStep = context.CurrentStep.Remove(0, utility.Length).Trim(' ');
     }
 }
