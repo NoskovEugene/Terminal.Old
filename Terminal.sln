@@ -1,22 +1,26 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal", "Terminal\Terminal.csproj", "{B7FD14B4-B659-4AD3-9DF9-B06C82073DBC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.App", "Terminal.App\Terminal.App.csproj", "{B7FD14B4-B659-4AD3-9DF9-B06C82073DBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{4FCE55BB-EC73-47C4-88BF-9907383CB280}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Core", "Terminal.Core\Terminal.Core.csproj", "{4FCE55BB-EC73-47C4-88BF-9907383CB280}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{B47CB090-98B2-403E-BA1F-6A99773A8585}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternalModels", "InternalModels\InternalModels.csproj", "{F814E822-8738-4238-B62B-3AB1EFE41AB9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.InternalModels", "Terminal.InternalModels\Terminal.InternalModels.csproj", "{F814E822-8738-4238-B62B-3AB1EFE41AB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedModels", "SharedModels\SharedModels.csproj", "{984B49DC-0A86-4D94-A3A2-070875FBC80B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.SharedModels", "Terminal.SharedModels\Terminal.SharedModels.csproj", "{984B49DC-0A86-4D94-A3A2-070875FBC80B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Routing", "Routing\Routing.csproj", "{16B56A12-6554-4133-AED9-80DB476EA66F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Routing", "Terminal.Routing\Terminal.Routing.csproj", "{16B56A12-6554-4133-AED9-80DB476EA66F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommonProjects", "CommonProjects", "{14ED4334-EA78-407F-B3D8-F22AE4877283}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{028DDA61-8CBE-4D20-8E5B-706115F5679E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Common", "Terminal.Common\Terminal.Common.csproj", "{028DDA61-8CBE-4D20-8E5B-706115F5679E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticAnalyzer", "SemanticAnalyzer\SemanticAnalyzer.csproj", "{2ED060A2-0F62-4657-90CF-0EBDF2B66A03}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.SemanticAnalyzer", "Terminal.SemanticAnalyzer\Terminal.SemanticAnalyzer.csproj", "{2ED060A2-0F62-4657-90CF-0EBDF2B66A03}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{A6080AB2-9365-4D46-94CD-5B37BE89C271}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.UI", "UI\Terminal.UI\Terminal.UI.csproj", "{7C0A4E80-CE19-47F5-8C24-67C75FF46032}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,10 +56,15 @@ Global
 		{2ED060A2-0F62-4657-90CF-0EBDF2B66A03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2ED060A2-0F62-4657-90CF-0EBDF2B66A03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2ED060A2-0F62-4657-90CF-0EBDF2B66A03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C0A4E80-CE19-47F5-8C24-67C75FF46032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C0A4E80-CE19-47F5-8C24-67C75FF46032}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C0A4E80-CE19-47F5-8C24-67C75FF46032}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C0A4E80-CE19-47F5-8C24-67C75FF46032}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F814E822-8738-4238-B62B-3AB1EFE41AB9} = {B47CB090-98B2-403E-BA1F-6A99773A8585}
 		{984B49DC-0A86-4D94-A3A2-070875FBC80B} = {B47CB090-98B2-403E-BA1F-6A99773A8585}
 		{028DDA61-8CBE-4D20-8E5B-706115F5679E} = {14ED4334-EA78-407F-B3D8-F22AE4877283}
+		{7C0A4E80-CE19-47F5-8C24-67C75FF46032} = {A6080AB2-9365-4D46-94CD-5B37BE89C271}
 	EndGlobalSection
 EndGlobal
