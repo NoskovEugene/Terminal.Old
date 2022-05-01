@@ -1,8 +1,9 @@
 ﻿using Terminal.SemanticAnalyzer.Models;
 
-namespace Terminal.Routing.Services.Parameter;
+namespace Terminal.Routing.Services.Parameter.ParameterAnalyze;
 
-public interface IParameterService
+
+public interface IParameterAnalyzeService
 {
     IEnumerable<object> PrepareParsedParameters(ParsingContext context);
     void ChangeParametersToPossibleType(ParsingContext context);

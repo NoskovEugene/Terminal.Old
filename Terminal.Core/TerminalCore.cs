@@ -6,6 +6,7 @@ using Terminal.Core.Helpers;
 using Terminal.Routing;
 using Terminal.Routing.Scanner;
 using Terminal.Routing.Services.Parameter;
+using Terminal.Routing.Services.Parameter.ParameterAnalyze;
 using Terminal.SharedModels.Models.Routing.Scanner;
 using Terminal.SharedModels.Services.Logging;
 using UI.RequestService;
@@ -38,7 +39,7 @@ public class TerminalCore
             .UsingFactoryMethod(kernel => kernel.Resolve<ILoggerService>().ConsoleLogger));
         Container.Register(Component.For<IRouter>().ImplementedBy<Router>().LifestyleSingleton());
         Container.Register(Component.For<IAssemblyScanner>().ImplementedBy<AssemblyScanner>());
-        Container.Register(Component.For<IParameterService>().ImplementedBy<ParameterService>().LifestyleSingleton());
+        Container.Register(Component.For<IParameterAnalyzeService>().ImplementedBy<ParameterAnalyzeService>().LifestyleSingleton());
     }
 
     public void StartListen()
@@ -46,7 +47,7 @@ public class TerminalCore
         _logger.Debug("Start listen");
         var requestService = Container.Resolve<UserRequestService>();
         var router = Container.Resolve<IRouter>();
-        var parameterService = Container.Resolve<IParameterService>();
+        var parameterService = Container.Resolve<IParameterAnalyzeService>();
         while (true)
         {
             var line = requestService.RequestLine("");

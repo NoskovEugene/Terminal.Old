@@ -22,8 +22,4 @@
       <ProjectReference Include="..\UI\Terminal.UI\Terminal.UI.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Services" />
-    </ItemGroup>
-
 </Project>

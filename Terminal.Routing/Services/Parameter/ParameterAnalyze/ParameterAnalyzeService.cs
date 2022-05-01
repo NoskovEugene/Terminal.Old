@@ -1,9 +1,9 @@
 ﻿using Terminal.Common.Extensions.List;
 using Terminal.SemanticAnalyzer.Models;
 
-namespace Terminal.Routing.Services.Parameter;
+namespace Terminal.Routing.Services.Parameter.ParameterAnalyze;
 
-public class ParameterService : IParameterService
+public class ParameterAnalyzeService : IParameterAnalyzeService
 {
 
     public IEnumerable<object> PrepareParsedParameters(ParsingContext context)

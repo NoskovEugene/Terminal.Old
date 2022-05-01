@@ -1,4 +1,4 @@
-﻿namespace Terminal.Routing.Services.Parameter;
+﻿namespace Terminal.Routing.Services.Parameter.ParameterAnalyze;
 
 public class CompareElementResult
 {

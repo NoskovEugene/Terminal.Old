@@ -3,6 +3,7 @@ using Serilog;
 using Terminal.SharedModels.Models.Routing.Scanner;
 using Terminal.Common.Extensions.List;
 using Terminal.Routing.Services.Parameter;
+using Terminal.Routing.Services.Parameter.ParameterAnalyze;
 
 namespace Terminal.Routing;
 
@@ -13,13 +14,13 @@ public class Router : IRouter
 
     private readonly ILogger _logger;
 
-    private readonly IParameterService _parameterService;
+    private readonly IParameterAnalyzeService _parameterAnalyzeService;
 
-    public Router(ILogger logger, IParameterService parameterService)
+    public Router(ILogger logger, IParameterAnalyzeService parameterAnalyzeService)
     {
         _logger = logger;
         _routes = new();
-        _parameterService = parameterService;
+        _parameterAnalyzeService = parameterAnalyzeService;
     }
 
     public void AppendUtilities(List<Utility> utilities)
