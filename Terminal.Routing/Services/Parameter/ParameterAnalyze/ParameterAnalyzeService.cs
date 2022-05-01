@@ -1,11 +1,25 @@
 ﻿using Terminal.Common.Extensions.List;
+using Terminal.Common.MapService;
+using Terminal.Common.MapService.Helpers;
+using Terminal.Routing.Services.ParameterMappingService;
 using Terminal.SemanticAnalyzer.Models;
 
 namespace Terminal.Routing.Services.Parameter.ParameterAnalyze;
 
 public class ParameterAnalyzeService : IParameterAnalyzeService
 {
+    private Map<Type> _typesMapping;
 
+    public ParameterAnalyzeService()
+    {
+        _typesMapping = new MapConfigurator<Type>().UseProfile<DefaultTypesMapProfile>().Build();
+    }
+
+    public bool CheckType<TFrom, TTo>()
+    {
+        return _typesMapping.ExistPath<TFrom, TTo>();
+    }
+    
     public IEnumerable<object> PrepareParsedParameters(ParsingContext context)
     {
         var resultList = new List<object>();

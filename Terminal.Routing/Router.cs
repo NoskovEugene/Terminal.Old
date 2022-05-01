@@ -67,11 +67,8 @@ public class Router : IRouter
             var parsedParameter = context.ParsedParameters[i];
             for (int j = 0; j < commands.Count; j++)
             {
-                var commandParameter = commands[j].Parameters[i].Type;
-                if (parsedParameter.PossibleParameterType != commandParameter)
-                {
-                    commands.Remove(commands[j]);
-                }
+                var command = commands[j];
+                
             }
         }
         return commands;

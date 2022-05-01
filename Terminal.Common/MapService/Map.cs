@@ -14,7 +14,7 @@ public class Map<T>
 
     private int NextIndex => _mapItems.Count;
 
-    public int AddItem(T value)
+    private int AddItem(T value)
     {
         var item = new MapItem<T>
         {
@@ -26,7 +26,7 @@ public class Map<T>
         return item.Id;
     }
 
-    public MapItem<T> Find(int id)
+    private MapItem<T> Find(int id)
     {
         if (Exist(id))
         {
@@ -36,12 +36,12 @@ public class Map<T>
         throw new Exception("Item not found");
     }
 
-    public bool Exist(int id)
+    private bool Exist(int id)
     {
         return _mapItems.Any(x => x.Id == id);
     }
 
-    public bool Exist(T value)
+    private bool Exist(T value)
     {
         return _mapItems.Any(x => x.Value.Equals(value));
     }
@@ -68,6 +68,7 @@ public class Map<T>
 
     public bool TryFindPath(T source, out Path<T> path)
     {
+        _visited.Clear();
         var rootItem = _mapItems.FirstOrDefault(x => x.Value.Equals(source));
         if (rootItem != null)
         {
@@ -104,5 +105,40 @@ public class Map<T>
         }
 
         return result;
+    }
+
+    public bool ExistPath(T from, T to)
+    {
+        var rootItem = _mapItems.FirstOrDefault(x => x.Value.Equals(from));
+        if (rootItem != null)
+        {
+            return ExistPathForItem(rootItem, to);
+        }
+
+        return false;
+    }
+
+    private bool ExistPathForItem(MapItem<T> item, T rootValue)
+    {
+        _visited.Add(item.Id);
+        foreach (var childrenIndex in item.ChildrenIndexes)
+        {
+            var child = _mapItems.First(x => x.Id == childrenIndex);
+            if (!_visited.Contains(childrenIndex))
+            {
+                if (child.Value.Equals(rootValue))
+                    return true;
+                var result = ExistPathForItem(child, rootValue);
+                if (result) return true;
+                var indx = _visited.IndexOf(child.Id);
+                _visited = _visited.Take(indx).ToList();   
+            }
+            else
+            {
+                Console.WriteLine("Cycle detected");
+            }
+        }
+
+        return false;
     }
 }
