@@ -4,7 +4,7 @@ namespace Terminal.Common.MapService;
 
 public class MapProfile<T>
 {
-    private List<MutableKeyValuePair<T, List<T>>> _pairs;
+    private readonly List<MutableKeyValuePair<T, List<T>>> _pairs = new();
 
     public void CreatePath(Action<PathBuilder<T>> builderAction)
     {

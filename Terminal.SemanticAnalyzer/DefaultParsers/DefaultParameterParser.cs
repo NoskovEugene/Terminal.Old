@@ -1,4 +1,5 @@
-﻿using Terminal.SemanticAnalyzer.Exceptions;
+﻿using Terminal.Common.Extensions;
+using Terminal.SemanticAnalyzer.Exceptions;
 using Terminal.SemanticAnalyzer.Models;
 
 namespace Terminal.SemanticAnalyzer.DefaultParsers;
@@ -9,6 +10,8 @@ public class DefaultParameterParser : IParser
 
     private const string ParserStep = "Parameter";
 
+    private bool _ruleFound = false;
+    
     public DefaultParameterParser()
     {
         _parsingRules.Add('"', context =>
@@ -27,15 +30,13 @@ public class DefaultParameterParser : IParser
         _parsingRules.Add('[', context =>
         {
             var input = context.CurrentStep;
-            var index = input.IndexOf(']');
-            if (index == -1) throw new ParsingException(ParserStep, "Closing tag not found");
-            var strParam = input[..(index + 1)]; // get ] char
-            var internalContext = new ParsingContext { CurrentStep = strParam.Trim('[', ']') };
+            var strParam = input.SubstringWithConsiderSimilar('[', ']', true); // get ] char
+            if (string.IsNullOrEmpty(strParam)) throw new ParsingException(ParserStep, "Not found closing tag ']'");
+            var internalContext = new ParsingContext { CurrentStep = strParam.Substring(1, strParam.Length-2) };
             Parse(ref internalContext);
             var parameter = new ParsedParameter(ParsedParameterTypeEnum.Array, internalContext.ParsedParameters);
             context.ParsedParameters.Add(parameter);
-            context.CurrentStep = context.CurrentStep.Replace(strParam, String.Empty)
-                .TrimStart(';')
+            context.CurrentStep = context.CurrentStep.Remove(0, strParam.Length)
                 .Trim();
         });
     }
@@ -56,11 +57,13 @@ public class DefaultParameterParser : IParser
     {
         var input = context.CurrentStep;
         if (string.IsNullOrWhiteSpace(input)) return false;
-        if (input[0] == '-' && input.Length > 2 && !char.IsDigit(input[1])) return false;
+        if (!_ruleFound && input[0] == '-' && input.Length > 2 && !char.IsDigit(input[1])) return false;
         var firstChar = input[0];
         if (_parsingRules.TryGetValue(firstChar, out var rule))
         {
+            _ruleFound = true;
             rule(context);
+            _ruleFound = false;
             return true;
         }
 

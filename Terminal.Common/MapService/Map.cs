@@ -109,6 +109,7 @@ public class Map<T>
 
     public bool ExistPath(T from, T to)
     {
+        _visited.Clear();
         var rootItem = _mapItems.FirstOrDefault(x => x.Value.Equals(from));
         if (rootItem != null)
         {

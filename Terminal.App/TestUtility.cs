@@ -20,7 +20,7 @@ public class TestUtility2
     }
 
     [Command("remove")]
-    public void TestMethod(string param1, string parameter)
+    public void TestMethod(double[,] array, string parameter)
     {
         _logger.Information("remove from test utility2");
     }
@@ -37,7 +37,7 @@ public class TestUtility
     }
 
     [Command("update")]
-    public void TestMethod(byte parameter1, int parameter2, [Flag]string[] flags)
+    public void TestMethod(string array, int parameter2, [Flag]string[] flags)
     {
         _logger.Information("add");
     }

@@ -5,8 +5,6 @@ using Serilog;
 using Terminal.Core.Helpers;
 using Terminal.Routing;
 using Terminal.Routing.Scanner;
-using Terminal.Routing.Services.Parameter;
-using Terminal.Routing.Services.Parameter.ParameterAnalyze;
 using Terminal.SharedModels.Models.Routing.Scanner;
 using Terminal.SharedModels.Services.Logging;
 using UI.RequestService;
@@ -39,15 +37,15 @@ public class TerminalCore
             .UsingFactoryMethod(kernel => kernel.Resolve<ILoggerService>().ConsoleLogger));
         Container.Register(Component.For<IRouter>().ImplementedBy<Router>().LifestyleSingleton());
         Container.Register(Component.For<IAssemblyScanner>().ImplementedBy<AssemblyScanner>());
-        Container.Register(Component.For<IParameterAnalyzeService>().ImplementedBy<ParameterAnalyzeService>().LifestyleSingleton());
+        /*Container.Register(Component.For<IParameterAnalyzeService>().ImplementedBy<ParameterAnalyzeService>().LifestyleSingleton());*/
     }
 
     public void StartListen()
     {
-        _logger.Debug("Start listen");
+        /*_logger.Debug("Start listen");
         var requestService = Container.Resolve<UserRequestService>();
         var router = Container.Resolve<IRouter>();
-        var parameterService = Container.Resolve<IParameterAnalyzeService>();
+        /*var parameterService = Container.Resolve<IParameterAnalyzeService>();#1#
         while (true)
         {
             var line = requestService.RequestLine("");
@@ -65,7 +63,7 @@ public class TerminalCore
             var parameters = context.ParsedParameters.Select(x => x.Value).ToList();
             parameters.AddRange(context.ParsedFlags);
             command.MethodInfo.Invoke(utilObject, parameters.ToArray());
-        }
+        }*/
     }
 
     private Command ChooseCommand(List<Command> commands)

@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Terminal.Common\Terminal.Common.csproj" />
+    </ItemGroup>
+
 </Project>
