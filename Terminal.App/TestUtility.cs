@@ -20,7 +20,7 @@ public class TestUtility2
     }
 
     [Command("remove")]
-    public void TestMethod(double[,] array, string parameter)
+    public void TestMethod(double[][] array, string parameter)
     {
         _logger.Information("remove from test utility2");
     }

@@ -56,7 +56,7 @@ public class Router : IRouter
         var commands = route.Commands.Where(x =>
                 x.Name == context.ParsedCommandName && x.Parameters.Count == context.ParsedParameters.Count)
             .ToList();
-        for (int i = 0; i < commands.Count; i++)
+        for (var i = 0; i < commands.Count; i++)
         {
             var command = commands[i];
             if (!CompareCollectionOfParameters(context.ParsedParameters, command.Parameters.ToList()))

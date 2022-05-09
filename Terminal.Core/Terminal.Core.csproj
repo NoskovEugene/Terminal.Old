@@ -8,10 +8,10 @@
 
     <ItemGroup>
       <PackageReference Include="Castle.Windsor" Version="5.1.1" />
-      <PackageReference Include="Serilog" Version="2.10.0" />
+      <PackageReference Include="Serilog" Version="2.11.1-dev-01397" />
       <PackageReference Include="Serilog.Settings.Configuration" Version="3.3.1-dev-00313" />
-      <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
-      <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+      <PackageReference Include="Serilog.Sinks.Console" Version="4.0.2-dev-00890" />
+      <PackageReference Include="Serilog.Sinks.File" Version="5.0.1-dev-00947" />
     </ItemGroup>
 
     <ItemGroup>
@@ -19,6 +19,7 @@
       <ProjectReference Include="..\Terminal.Routing\Terminal.Routing.csproj" />
       <ProjectReference Include="..\Terminal.SemanticAnalyzer\Terminal.SemanticAnalyzer.csproj" />
       <ProjectReference Include="..\Terminal.SharedModels\Terminal.SharedModels.csproj" />
+      <ProjectReference Include="..\Terminal.SystemCommands\Terminal.SystemCommands.csproj" />
       <ProjectReference Include="..\UI\Terminal.UI\Terminal.UI.csproj" />
     </ItemGroup>
 

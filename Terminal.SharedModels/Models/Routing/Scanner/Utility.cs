@@ -6,5 +6,7 @@ public class Utility
 {
     public string Name { get; set; }
     
-    public IList<Command> Commands {get; set; }
+    public Type UtilityType { get; set; }
+
+    public IList<Command> Commands { get; set; }
 }

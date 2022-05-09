@@ -7,14 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Terminal.Common\Terminal.Common.csproj" />
-      <ProjectReference Include="..\Terminal.InternalModels\Terminal.InternalModels.csproj" />
-      <ProjectReference Include="..\Terminal.SemanticAnalyzer\Terminal.SemanticAnalyzer.csproj" />
+      <ProjectReference Include="..\Terminal.Routing\Terminal.Routing.csproj" />
       <ProjectReference Include="..\Terminal.SharedModels\Terminal.SharedModels.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Serilog" Version="2.11.1-dev-01397" />
+      <PackageReference Include="Castle.Windsor" Version="5.1.1" />
     </ItemGroup>
 
 </Project>

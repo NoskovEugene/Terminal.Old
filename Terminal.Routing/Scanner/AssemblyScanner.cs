@@ -8,23 +8,29 @@ namespace Terminal.Routing.Scanner;
 
 public class AssemblyScanner : IAssemblyScanner
 {
-    public List<Utility> ScanAssembly(Assembly assembly)
+    public List<Utility> ScanTypes(params Type[] types)
     {
         var lst = new List<Utility>();
-        var types = assembly.GetTypes();
-        types.Foreach(x =>
+        foreach (var type in types)
         {
-            if (x.IsUtility(out var attribute))
+            if (type.IsUtility(out var attribute))
             {
-                var utility = new Utility
+                var utility = new Utility()
                 {
                     Name = attribute.UtilityName,
-                    Commands = GetCommands(assembly, x),
+                    UtilityType = type,
+                    Commands = GetCommands(type.Assembly, type)
                 };
                 lst.Add(utility);
             }
-        });
+        }
+
         return lst;
+    }
+
+    public List<Utility> ScanAssembly(Assembly assembly)
+    {
+        return ScanTypes(assembly.GetTypes());
     }
 
     private List<Command> GetCommands(Assembly assemblyInfo, Type utilityType)
