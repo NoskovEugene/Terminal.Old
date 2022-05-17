@@ -1,4 +1,4 @@
-﻿using Terminal.SemanticAnalyzer.Models;
+using Terminal.SemanticAnalyzer.Models;
 
 namespace Terminal.SemanticAnalyzer;
 
@@ -41,7 +41,7 @@ public class SyntaxAnalyzer : ISyntaxAnalyzer
         };
         ParsersChain.ForEach(x =>
         {
-            x.Instance ??= (IParser)Activator.CreateInstance(x.ParserType);
+            x.Instance ??= (IParser)Activator.CreateInstance(x.ParserType)!;
             x.Instance.Parse(ref context);
         });
         return context;

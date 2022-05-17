@@ -45,6 +45,13 @@ public class Router : IRouter
         return true;
     }
 
+    public List<Route> GetAllRoutes() => _routes;
+    public Command? FindByUtilAndCommand(string utilName, string commandName)
+    {
+        return _routes.FirstOrDefault(x => x.UtilityName == utilName)!.Commands
+            .FirstOrDefault(x => x.Name == commandName);
+    }
+
     public List<Command> FindCommands(ParsingContext context)
     {
         var route = _routes.FirstOrDefault(x => x.UtilityName == context.ParsedUtilityName);
@@ -67,7 +74,7 @@ public class Router : IRouter
         return commands;
     }
 
-    public bool CompareCollectionOfParameters(List<ParsedParameter> parsedParameters, List<Parameter> parameters)
+    private bool CompareCollectionOfParameters(List<ParsedParameter> parsedParameters, List<Parameter> parameters)
     {
         for (var i = 0; i < parsedParameters.Count; i++)
         {
@@ -97,12 +104,10 @@ public class Router : IRouter
             parsedParameter.Value = targetArray;
             return true;
         }
-        else
-        {
-            if (!TryConvertToType(parsedParameter.Value, parameter.Type, out var objectResult)) return false;
-            parsedParameter.Value = objectResult;
-            return true;
-        }
+
+        if (!TryConvertToType(parsedParameter.Value, parameter.Type, out var objectResult)) return false;
+        parsedParameter.Value = objectResult;
+        return true;
     }
 
     private bool TryConvertToType(object input, Type targetType, out object value)
@@ -112,7 +117,7 @@ public class Router : IRouter
             value = Convert.ChangeType(input, targetType);
             return true;
         }
-        catch
+        catch (Exception e)
         {
             value = null;
             return false;

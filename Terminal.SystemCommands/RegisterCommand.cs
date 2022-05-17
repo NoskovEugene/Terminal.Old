@@ -37,9 +37,9 @@ public class RegisterCommand
         Assembly assembly;
         try
         {
-            assembly = Assembly.LoadFile(pathToLib);
+            assembly = Assembly.LoadFrom(pathToLib);
         }
-        catch (Exception)
+        catch (Exception e)
         {
             _logger.Error("Assembly cannot be loaded");
             return;

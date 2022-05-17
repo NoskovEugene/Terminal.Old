@@ -1,4 +1,4 @@
-﻿using Terminal.SemanticAnalyzer.Models;
+using Terminal.SemanticAnalyzer.Models;
 
 namespace Terminal.SemanticAnalyzer;
 

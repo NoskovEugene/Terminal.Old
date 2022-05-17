@@ -43,8 +43,14 @@ public class TestUtility
     }
 
     [Command("delete")]
-    public void TestMethod(int parameter1, string parameter2, [Flag]string[] flags)
+    public void TestMethod(TestEnum enumValue)
     {
-        _logger.Information("remove");
+        _logger.Information(enumValue.ToString());
     }
+}
+
+public enum TestEnum
+{
+    First,
+    Second
 }

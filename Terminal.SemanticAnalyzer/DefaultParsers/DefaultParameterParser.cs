@@ -57,7 +57,7 @@ public class DefaultParameterParser : IParser
     {
         var input = context.CurrentStep;
         if (string.IsNullOrWhiteSpace(input)) return false;
-        if (!_ruleFound && input[0] == '-' && input.Length > 2 && !char.IsDigit(input[1])) return false;
+        if (!_ruleFound && input[0] == '-' && input.Length == 2 && !char.IsDigit(input[1])) return false;
         var firstChar = input[0];
         if (_parsingRules.TryGetValue(firstChar, out var rule))
         {

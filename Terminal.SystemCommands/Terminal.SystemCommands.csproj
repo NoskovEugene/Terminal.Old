@@ -9,6 +9,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Terminal.Routing\Terminal.Routing.csproj" />
       <ProjectReference Include="..\Terminal.SharedModels\Terminal.SharedModels.csproj" />
+      <ProjectReference Include="..\UI\Terminal.UI\Terminal.UI.csproj" />
     </ItemGroup>
 
     <ItemGroup>

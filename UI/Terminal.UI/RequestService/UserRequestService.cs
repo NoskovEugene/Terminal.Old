@@ -18,7 +18,7 @@ public class UserRequestService
         return Console.ReadLine();
     }
 
-    public T RequestObject<T>(string message)
+    public T RequestBuiltIn<T>(string message)
     {
         while (true)
         {
@@ -47,13 +47,13 @@ public class UserRequestService
     public T SelectItem<T>(List<T> values, string headerMessage, Func<T, string> customToString)
     {
         _logger.Information(headerMessage);
-        for (int i = 0; i < values.Count; i++)
+        for (var i = 0; i < values.Count; i++)
         {
             _logger.Information($"{i}) {customToString(values[i])}");
         }
         while (true)
         {
-            var index = RequestObject<int>("Type index below");
+            var index = RequestBuiltIn<int>("Type index below");
             if (index >= 0 && index < values.Count)
             {
                 return values[index];

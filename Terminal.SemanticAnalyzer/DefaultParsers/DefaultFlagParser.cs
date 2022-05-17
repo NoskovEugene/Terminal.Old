@@ -15,7 +15,7 @@ public class DefaultFlagParser : IParser
         while (ParseNextFlag(ref context))
         {
             counter += 1;
-            if (counter >= 1000) 
+            if (counter >= 10) 
                 throw new ParsingException(ParseStep, "To long parsing. Possible stack overflow error");
         } 
     }

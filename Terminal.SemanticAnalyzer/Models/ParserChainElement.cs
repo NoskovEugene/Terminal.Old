@@ -1,4 +1,4 @@
-﻿namespace Terminal.SemanticAnalyzer.Models;
+namespace Terminal.SemanticAnalyzer.Models;
 
 public class ParserChainElement
 {

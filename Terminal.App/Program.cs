@@ -15,32 +15,9 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        var systemCommands = new List<Type>()
-        {
-            typeof(RegisterCommand)
-        };
         var core = new TerminalCore();
-        var scanner = core.Container.Resolve<IAssemblyScanner>();
-        var utils = scanner.ScanTypes(systemCommands.ToArray());
-        var router = core.Container.Resolve<IRouter>();
-        router.AppendUtilities(utils);
-        foreach (var systemCommand in systemCommands)
-        {
-            core.Container.Register(Component.For(systemCommand).ImplementedBy(systemCommand));
-        }
-
-        var analyzer = core.Container.Resolve<ISyntaxAnalyzer>();
-        Console.Write(">_");
-        var ctx = analyzer.ParseInputLine(Console.ReadLine());
-        var command = router.FindCommands(ctx)[0];
-        var instance = core.Container.Resolve(command.ClassInfo);
-        var parameters = ctx.ParsedParameters.Select(x => x.Value).ToList();
-        if (ctx.ParsedFlags.Count > 0)
-        {
-            parameters.Add(ctx.ParsedFlags.ToArray());
-        }
-
-        command.MethodInfo.Invoke(instance, parameters.ToArray());
-        Console.ReadKey();
+        var logger = core.Container.Resolve<ILogger>();
+        logger.Information("Use 'allcommands' for view all commands");
+        core.StartListen();
     }
 }
