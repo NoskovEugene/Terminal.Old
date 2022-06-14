@@ -67,6 +67,7 @@ public class TerminalCore
         var analyzer = Container.Resolve<ISyntaxAnalyzer>();
         var router = Container.Resolve<IRouter>();
         var logger = Container.Resolve<ILogger>();
+        logger.Information("Use 'sys.allcommands' for view all commands");
         while (cancel)
         {
             Console.Write(">_ ");
@@ -138,6 +139,7 @@ public class TerminalCore
             }
             catch (Exception e)
             {
+                logger.Fatal("Handled some error while activating command");
                 logger.Fatal(e.Message);
             }
         }

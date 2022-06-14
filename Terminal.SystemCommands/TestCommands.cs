@@ -22,7 +22,7 @@ public class TestCommands
     [Command("testuserrequest")]
     public void TestUserRequestService()
     {
-        _logger.Information("This is a UserRequestService test");
+        _logger.Information("---This is a UserRequestService test---");
         _logger.Information("Requesting line");
         var line = _userRequestService.RequestLine("Type line below");
         _logger.Information($"Typed line is '{line}'");
@@ -43,5 +43,6 @@ public class TestCommands
         };
         var selectedItem = _userRequestService.SelectItem(collection, "Select one item");
         _logger.Information($"Selected item is {selectedItem}");
+        _logger.Information("---Test end---");
     }
 }

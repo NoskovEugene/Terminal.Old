@@ -48,4 +48,23 @@ public class ShowCommandInfoCommand
             _logger.Information("Command with this name not found");
         }
     }
+
+    [Command("ci")]
+    public void ShowShort(string utilName, string commandName)
+    {
+        Show(utilName, commandName);
+    }
+
+    [Command("ci")]
+    public void ShowOneParameter(string utilWithCommand)
+    {
+        var array = utilWithCommand.Split(".", StringSplitOptions.RemoveEmptyEntries);
+        if (array.Length < 1)
+        {
+            _logger.Error($"Value '{utilWithCommand}' is not utility name with command. Use this pattern 'UtilityName.CommandName'");
+            return;
+        } 
+        
+        Show(array[0], array[1]);        
+    }
 }

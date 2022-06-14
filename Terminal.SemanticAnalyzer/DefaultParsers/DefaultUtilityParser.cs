@@ -17,6 +17,7 @@ public class DefaultUtilityParser : IParser
         }}
     };
 
+
     public void Parse(ref ParsingContext context)
     {
         context.CurrentStep ??= context.UnparsedLine;

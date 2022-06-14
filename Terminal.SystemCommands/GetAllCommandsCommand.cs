@@ -30,11 +30,4 @@ public class GetAllCommandsCommand
             }
         }
     }
-    
-    [Command("test")]
-    public void Test(double val, string[] flags)
-    {
-        Console.WriteLine(val.GetType());
-        Console.WriteLine(val);
-    }
 }
