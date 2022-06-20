@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Terminal.Common\Terminal.Common.csproj" />
+      <ProjectReference Include="..\Terminal.InternalModels\Terminal.InternalModels.csproj" />
+      <ProjectReference Include="..\Terminal.SemanticAnalyzer\Terminal.SemanticAnalyzer.csproj" />
+      <ProjectReference Include="..\Terminal.SharedModels\Terminal.SharedModels.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Serilog" Version="2.11.0" />
+    </ItemGroup>
+
+</Project>
